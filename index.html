@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sree Lasya Balaji — Computer Vision Researcher & ML Engineer Portfolio">
+<title>Sree Lasya Balaji | Computer Vision & ML</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0E14;
+    --bg-alt:#12161F;
+    --card:#151A24;
+    --ink:#EDEEF2;
+    --ink-soft:#9099AC;
+    --accent:#4A6FE0;
+    --accent-soft:#1B2440;
+    --line:#232937;
+    --max:920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500;}
+
+  /* ---- Nav ---- */
+  nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(11,14,20,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .inner{
+    max-width:var(--max); margin:0 auto; padding:18px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  nav .mark{font-family:'Fraunces', serif; font-size:18px; font-weight:600;}
+  nav ul{list-style:none; display:flex; gap:26px; font-size:14px;}
+  nav a{color:var(--ink-soft); transition:color .15s ease;}
+  nav a:hover{color:var(--ink);}
+
+  /* ---- Hero ---- */
+  #home{padding:96px 0 72px;}
+  .hero-grid{display:flex; gap:56px; align-items:center; flex-wrap:wrap;}
+  .hero-content{flex:1; min-width:300px;}
+  .greeting{color:var(--accent); font-size:1rem; margin-bottom:8px;}
+  .hero-content h1{font-size:clamp(2.2rem,5.5vw,3.2rem); line-height:1.1; letter-spacing:-0.01em;}
+  .role-line{
+    font-size:1.15rem; color:var(--ink-soft); margin-top:12px; font-family:'Inter',sans-serif;
+  }
+  .tagline{max-width:52ch; color:var(--ink-soft); margin-top:18px; font-size:1rem;}
+  .hero-buttons{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:11px 22px; border-radius:6px; font-size:0.92rem; font-weight:500;
+    border:1px solid var(--line); transition:all .15s ease;
+  }
+  .btn-primary{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .btn-primary:hover{background:#3d5fc9;}
+  .btn-outline{color:var(--ink); border-color:var(--line);}
+  .btn-outline:hover{border-color:var(--accent); color:var(--accent);}
+  .social-links{display:flex; gap:18px; margin-top:26px;}
+  .social-links a{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:0.85rem;
+  }
+  .social-links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  .hero-photo{
+    width:230px; height:230px; border-radius:10px; flex-shrink:0;
+    background:var(--bg-alt); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover;}
+  .hero-photo .placeholder{font-size:0.8rem; color:var(--ink-soft); text-align:center; padding:12px;}
+
+  section{padding:64px 0; border-top:1px solid var(--line);}
+  .section-title{font-size:1.7rem; margin-bottom:32px;}
+
+  /* ---- About ---- */
+  .about-content p{color:var(--ink-soft); max-width:68ch; margin-bottom:14px;}
+  .about-content strong{color:var(--ink); font-weight:600;}
+  .edu-cards{display:flex; gap:18px; margin-top:32px; flex-wrap:wrap;}
+  .edu-card{
+    flex:1; min-width:240px; background:var(--card); border:1px solid var(--line);
+    border-radius:8px; padding:20px;
+  }
+  .edu-card h3{font-size:1rem; color:var(--accent); font-family:'Inter',sans-serif; font-weight:600;}
+  .edu-card p{margin-top:6px; font-size:0.92rem;}
+  .edu-card span{display:block; margin-top:6px; font-size:0.82rem; color:var(--ink-soft);}
+
+  /* ---- Skills ---- */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:28px;}
+  .skill-category h3{font-size:0.95rem; font-family:'Inter',sans-serif; font-weight:600; margin-bottom:12px;}
+  .skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-tag{
+    font-size:0.82rem; padding:5px 12px; border-radius:5px;
+    background:var(--accent-soft); color:var(--accent);
+  }
+  @media (max-width:760px){.skills-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.skills-grid{grid-template-columns:1fr;}}
+
+  /* ---- Experience timeline ---- */
+  .timeline{position:relative; padding-left:24px; border-left:1px solid var(--line);}
+  .timeline-item{position:relative; padding-bottom:36px;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-dot{
+    position:absolute; left:-29px; top:4px; width:10px; height:10px; border-radius:50%;
+    background:var(--accent);
+  }
+  .timeline-item h3{font-size:1rem; font-family:'Inter',sans-serif; font-weight:600;}
+  .timeline-item .org{color:var(--accent); font-size:0.9rem; margin-top:2px; display:block;}
+  .timeline-item .date{color:var(--ink-soft); font-size:0.82rem; display:block; margin-top:2px;}
+  .timeline-item ul{margin-top:10px; padding-left:18px; color:var(--ink-soft); font-size:0.92rem;}
+  .timeline-item li{margin-bottom:6px;}
+
+  /* ---- Projects ---- */
+  .projects-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;}
+  .project-card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:22px;
+    display:flex; flex-direction:column;
+  }
+  .project-card h3{font-size:1.02rem; font-family:'Inter',sans-serif; font-weight:600;}
+  .project-card p{color:var(--ink-soft); font-size:0.9rem; margin-top:10px; flex:1;}
+  .project-tech{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;}
+  .project-tech span{font-size:0.76rem; padding:3px 9px; border-radius:4px; background:var(--accent-soft); color:var(--accent);}
+  .project-links{margin-top:16px; display:flex; gap:10px;}
+  .project-links a{
+    font-size:0.82rem; padding:7px 14px; border-radius:5px; border:1px solid var(--line); color:var(--ink-soft);
+  }
+  .project-links a:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---- Contact ---- */
+  .contact-text{color:var(--ink-soft); max-width:56ch; margin-bottom:28px;}
+  .contact-cards{display:flex; gap:16px; flex-wrap:wrap;}
+  .contact-card{
+    display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line);
+    border-radius:8px; padding:14px 20px; font-size:0.92rem;
+  }
+  .contact-card:hover{border-color:var(--accent); color:var(--accent);}
+  .location{margin-top:24px; color:var(--ink-soft); font-size:0.88rem;}
+
+  footer{padding:32px 28px; text-align:center; font-size:0.82rem; color:var(--ink-soft); border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <span class="mark">SLB</span>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section id="home">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="greeting">Hey there! I'm</p>
+        <h1>Sree Lasya Balaji</h1>
+        <p class="role-line">Computer Vision Researcher &amp; ML Engineer</p>
+        <p class="tagline">I work at the intersection of applied research and full-stack systems — from published computer vision papers to end-to-end ML and data pipelines people can actually use.</p>
+        <p style="margin-top:14px; font-size:0.85rem; color:var(--accent);">Available January 2027 for Co-op or Internship</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#" class="btn btn-outline">Download Resume</a>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/sree-lasya-balaji-a0542826a/" target="_blank" aria-label="LinkedIn">in</a>
+          <a href="https://github.com/lasyabalaji" target="_blank" aria-label="GitHub">gh</a>
+          <a href="mailto:balaji.sree@northeastern.edu" aria-label="Email">@</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <!-- Replace with: <img src="your-photo.jpg" alt="Sree Lasya Balaji"> -->
+        <span class="placeholder">your photo here</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <p>I'm currently pursuing my <strong>Master's in Computer Science at Northeastern University's Khoury College</strong>. My path started in computer vision — my undergraduate research on single-image haze removal and cyberbullying detection using neural networks led to two peer-reviewed publications.</p>
+      <p>I currently work as an <strong>AI Instructional Assistant at CATLR</strong> (Center for Advancing Teaching and Learning through Research) at Northeastern, building GenAI and prompt-engineering tools that help faculty put AI to practical use in the classroom.</p>
+      <p>Outside research, I like building full-stack systems that turn messy, real-world processes — like university budgeting or spam filtering — into something usable and reliable.</p>
+    </div>
+    <div class="edu-cards">
+      <div class="edu-card">
+        <h3>Northeastern University</h3>
+        <p>Master of Science, Computer Science — Khoury College of Computer Sciences · GPA 3.6/4.0</p>
+        <span>Jan 2026 – May 2028</span>
+      </div>
+      <div class="edu-card">
+        <h3>Sreenidhi Institute of Science and Technology</h3>
+        <p>Bachelor of Technology, Computer Science and Engineering</p>
+        <span>Graduated Jun 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2 class="section-title">Publications</h2>
+    <div class="edu-cards">
+      <div class="edu-card">
+        <h3>Novel Approach for Cyberbully Detection Using Neural Networks</h3>
+        <p>International Journal of Novel Research and Development (IJNRD)</p>
+        <span>Jul 2024</span>
+      </div>
+      <div class="edu-card">
+        <h3>Single-Image Haze Removal for Enhanced Vision Applications</h3>
+        <p>Grenze International Journal of Engineering and Technology</p>
+        <span>Aug 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>ML / AI</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SVM</span>
+          <span class="skill-tag">KNN</span>
+          <span class="skill-tag">Naïve Bayes</span>
+          <span class="skill-tag">Random Forest</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">GenAI Prototyping</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Data &amp; Databases</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Exploratory Data Analysis</span>
+          <span class="skill-tag">Data Validation</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Data Visualization</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Web Technologies</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Django</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Cloud &amp; Certifications</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS ML Foundations</span>
+          <span class="skill-tag">AWS Data Engineering</span>
+          <span class="skill-tag">AWS Cloud Foundations</span>
+          <span class="skill-tag">AWS Cloud Architecting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <h3 style="font-size:1rem; font-family:'Inter',sans-serif; color:var(--ink-soft); margin-bottom:16px;">Work Experience</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>AI Instructional Assistant</h3>
+        <span class="org">CATLR, Northeastern University</span>
+        <span class="date">Sep 2026 – Present</span>
+        <ul>
+          <li>Prototype and test generative AI tools and prompting approaches for course assignments, documenting effective practices for CATLR's Teaching with AI resources.</li>
+          <li>Collaborate with faculty to evaluate feasibility of GenAI use cases, applying Python and prompt engineering skills to assess model outputs for effectiveness and safety.</li>
+          <li>Research how peer institutions approach AI-in-teaching challenges and present findings to the CATLR team in weekly meetings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem; font-family:'Inter',sans-serif; color:var(--ink-soft); margin:40px 0 16px;">Activities &amp; Volunteer Experience</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>Student Coordinator</h3>
+        <span class="org">Sreenidhi Institute of Science and Technology</span>
+        <span class="date">Aug 2023 – Jan 2024</span>
+        <ul>
+          <li>Peer-mentored orientation for 1,000+ incoming students; handled 20+ weekly student queries and escalations.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>Public Relations Head</h3>
+        <span class="org">Student Alumni Relationship Cell (SARC), Sreenidhi Institute of Science and Technology</span>
+        <span class="date">Dec 2023 – Dec 2024</span>
+        <ul>
+          <li>Led student-alumni communication and organized the Annual Alumni Meet (Rendezvous '24); gathered feedback via surveys to shape programming.</li>
+          <li>Served on the Advisory Board (2024–2025).</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>Designing Head</h3>
+        <span class="org">Sreenidhi Photography Club, Sreenidhi Institute of Science and Technology</span>
+        <span class="date">Dec 2022 – Dec 2023</span>
+        <ul>
+          <li>Facilitated workshops for 150+ members and led promotional/digital content for club events.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>University Budget Management System</h3>
+        <p>Centralized system streamlining university financial operations — tuition tracking, payroll, scholarship disbursement, and campus expenses — with role-based dashboards for Finance Officers, Admins, Deans, Registrars, and Students. Automated salary payments and tax calculations, and added real-time budget tracking across departments.</p>
+        <div class="project-tech">
+          <span>SQL</span><span>RBAC</span><span>System Design</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank">Code</a>
+        </div>
+        <span style="color:var(--ink-soft); font-size:0.78rem; margin-top:10px;">Feb 2026 – Apr 2026 · Northeastern University</span>
+      </div>
+      <div class="project-card">
+        <h3>Road Safety: Rain, Haze &amp; Fog Detection</h3>
+        <p>Computer vision pipeline that restores visibility in adverse weather using Dark Channel Prior for haze density estimation, guided filtering to refine transmission maps, adaptive image enhancement, and CNN-based parameter prediction — improving accuracy for downstream detection and tracking tasks.</p>
+        <div class="project-tech">
+          <span>OpenCV</span><span>CNN</span><span>Computer Vision</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank">Code</a>
+        </div>
+        <span style="color:var(--ink-soft); font-size:0.78rem; margin-top:10px;">Jan 2025 – May 2025 · Sreenidhi Institute of Science and Technology</span>
+      </div>
+      <div class="project-card">
+        <h3>Email Spam Detection</h3>
+        <p>ML-based spam classifier comparing Naïve Bayes, SVM, Random Forest, KNN, and Decision Tree models, with NLP preprocessing (tokenization, stop-word removal, stemming) and feature extraction to separate spam from legitimate mail.</p>
+        <div class="project-tech">
+          <span>Python</span><span>scikit-learn</span><span>NLP</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank">Code</a>
+        </div>
+        <span style="color:var(--ink-soft); font-size:0.78rem; margin-top:10px;">Mar 2024 – Jul 2024 · Sreenidhi Institute of Science and Technology</span>
+      </div>
+      <div class="project-card">
+        <h3>Parallax Website</h3>
+        <p>Immersive scrolling website using layered foreground/background motion for depth and interactivity, built with responsive design and accessibility in mind.</p>
+        <div class="project-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank">Code</a>
+        </div>
+        <span style="color:var(--ink-soft); font-size:0.78rem; margin-top:10px;">May 2024 – Jul 2024 · Sreenidhi Institute of Science and Technology</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="contact-text">Open to computer vision, ML, and data-focused roles — always happy to talk about research, projects, or opportunities.</p>
+    <div class="contact-cards">
+      <a href="mailto:balaji.sree@northeastern.edu" class="contact-card">balaji.sree@northeastern.edu</a>
+      <a href="https://www.linkedin.com/in/sree-lasya-balaji-a0542826a/" target="_blank" class="contact-card">LinkedIn</a>
+      <a href="https://github.com/lasyabalaji" target="_blank" class="contact-card">GitHub</a>
+    </div>
+    <p class="location">Boston, MA 02120</p>
+  </section>
+
+</div>
+
+<footer>&copy; 2026 Sree Lasya Balaji. All rights reserved.</footer>
+
+</body>
+</html>
